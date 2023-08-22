@@ -1,6 +1,8 @@
 import React from "react";
 //import { createRoot } from "react-dom/client";
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
+import "./styles.css";
+import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
 
 const initialValues = {
   nodules: [
@@ -17,10 +19,153 @@ const initialValues = {
   lung_rads: "",
   additional_inf: "",
   additional_inf_1: "",
-	expert_required: false,
-	second_report: "",
-	expert_report: "",
+  expert_required: false,
+  second_report: "",
+  expert_report: "",
 };
+
+const additionalInf = [
+  {
+    value: "Нет",
+    label: "Нет",
+  },
+  {
+    value: "Эмфизема",
+    label: "Эмфизема",
+  },
+  {
+    value: "Буллы",
+    label: "Буллы",
+  },
+  {
+    value: "Центральное образование",
+    label: "Центральное образование",
+  },
+  {
+    value: "Обтурационный ателектаз",
+    label: "Обтурационный ателектаз",
+  },
+  {
+    value: "Участки «матового стекла»",
+    label: "Участки «матового стекла»",
+  },
+  {
+    value: "Участки консолидации",
+    label: "Участки консолидации",
+  },
+  {
+    value: "Признаки туберкулеза",
+    label: "Признаки туберкулеза",
+  },
+  {
+    value: "Полость в легком",
+    label: "Полость в легком",
+  },
+  {
+    value: "Признаки мицетомы",
+    label: "Признаки мицетомы",
+  },
+  {
+    value: "Множественные кисты",
+    label: "Множественные кисты",
+  },
+  {
+    value: "Ретенционная киста",
+    label: "Ретенционная киста",
+  },
+  {
+    value: "Диссеминированный процесс",
+    label: "Диссеминированный процесс",
+  },
+  {
+    value: "Симптом «дерева в почках»",
+    label: "Симптом «дерева в почках»",
+  },
+  {
+    value: "Центрилобулярные очаги",
+    label: "Центрилобулярные очаги",
+  },
+  {
+    value: "Типичная ОИП",
+    label: "Типичная ОИП",
+  },
+  {
+    value: "Интерстициальные неуточненные изменения с фиброзированием",
+    label: "Интерстициальные неуточненные изменения с фиброзированием",
+  },
+  {
+    value: "Интерстициальные изменения неуточненные",
+    label: "Интерстициальные изменения неуточненные",
+  },
+  {
+    value: "Бронхоэктазы",
+    label: "Бронхоэктазы",
+  },
+  {
+    value: "Признаки венозного застоя",
+    label: "Признаки венозного застоя",
+  },
+  {
+    value: "Гидроторакс",
+    label: "Гидроторакс",
+  },
+  {
+    value: "Пневмоторакс",
+    label: "Пневмоторакс",
+  },
+  {
+    value: "Плевральные бляшки",
+    label: "Плевральные бляшки",
+  },
+  {
+    value: "Образования плевры",
+    label: "Образования плевры",
+  },
+  {
+    value: "Внтригрудная лимфаденопатия",
+    label: "Внтригрудная лимфаденопатия",
+  },
+  {
+    value: "Образование средостения",
+    label: "Образование средостения",
+  },
+  {
+    value: "ГПОД",
+    label: "ГПОД",
+  },
+  {
+    value: "Кальцинация коронарных артерий",
+    label: "Кальцинация коронарных артерий",
+  },
+  {
+    value: "Аневризма аорты",
+    label: "Аневризма аорты",
+  },
+  {
+    value: "Расширение легочных артерий",
+    label: "Расширение легочных артерий",
+  },
+  {
+    value: "Гидроперикард",
+    label: "Гидроперикард",
+  },
+  {
+    value: "Узлы щитовидной железы",
+    label: "Узлы щитовидной железы",
+  },
+  {
+    value: "Образование молочной железы",
+    label: "Образование молочной железы",
+  },
+  {
+    value: "Образование надпочечников",
+    label: "Образование надпочечников",
+  },
+  {
+    value: "Образования печени",
+    label: "Образования печени",
+  },
+];
 
 const ProtocolComponent = () => {
   return (
@@ -41,13 +186,13 @@ const ProtocolComponent = () => {
                   {values.nodules.length > 0 &&
                     values.nodules.map((nodule, index) => (
                       <div className="row" key={index}>
-                        <div>Очаг № {index + 1} </div>
+                        <div className="nodule-index">Очаг № {index + 1} </div>
                         <div className="col lung-position-select">
                           <label htmlFor={`nodules.${index}.lung_position`}>
                             Расположение легкого:{" "}
                           </label>
-													<Field
-														id={`nodules.${index}.lung_position`}
+                          <Field
+                            id={`nodules.${index}.lung_position`}
                             name={`nodules.${index}.lung_position`}
                             placeholder="Выберите расположение"
                             type="text"
@@ -62,8 +207,8 @@ const ProtocolComponent = () => {
                           <label htmlFor={`nodules.${index}.local`}>
                             Локализация очага:{" "}
                           </label>
-													<Field
-                            id={`nodules.${index}.local`}														
+                          <Field
+                            id={`nodules.${index}.local`}
                             name={`nodules.${index}.local`}
                             placeholder="Укажите локализацию очага..."
                             type="text"
@@ -73,8 +218,8 @@ const ProtocolComponent = () => {
                           <label htmlFor={`nodules.${index}.type_of_nodule`}>
                             Тип очага:{" "}
                           </label>
-													<Field
-														id={`nodules.${index}.type_of_nodule`}
+                          <Field
+                            id={`nodules.${index}.type_of_nodule`}
                             name={`nodules.${index}.type_of_nodule`}
                             placeholder="Выберите расположение"
                             type="text"
@@ -94,8 +239,8 @@ const ProtocolComponent = () => {
                           <label htmlFor={`nodules.${index}.size_of_finding`}>
                             Размер очага в мм:{" "}
                           </label>
-													<Field
-														id={`nodules.${index}.size_of_finding`}
+                          <Field
+                            id={`nodules.${index}.size_of_finding`}
                             name={`nodules.${index}.size_of_finding`}
                             placeholder="Укажите размер очага..."
                             type="text"
@@ -105,8 +250,8 @@ const ProtocolComponent = () => {
                           <label htmlFor={`nodules.${index}.volume`}>
                             Объём в мм<sup>3</sup>:{" "}
                           </label>
-													<Field
-														id={`nodules.${index}.volume`}
+                          <Field
+                            id={`nodules.${index}.volume`}
                             name={`nodules.${index}.volume`}
                             placeholder="Укажите объем очага..."
                             type="text"
@@ -116,8 +261,8 @@ const ProtocolComponent = () => {
                           <label htmlFor={`nodules.${index}.benign_signs`}>
                             Признаки доброкачественности:{" "}
                           </label>
-													<Field
-														id={`nodules.${index}.benign_signs`}
+                          <Field
+                            id={`nodules.${index}.benign_signs`}
                             name={`nodules.${index}.benign_signs`}
                             placeholder="Выберите признаки..."
                             type="text"
@@ -135,8 +280,8 @@ const ProtocolComponent = () => {
                           <label htmlFor={`nodules.${index}.email`}>
                             Email
                           </label>
-													<Field
-														id={`nodules.${index}.email`}
+                          <Field
+                            id={`nodules.${index}.email`}
                             name={`nodules.${index}.email`}
                             placeholder="jane@acme.com"
                             type="email"
@@ -240,87 +385,13 @@ const ProtocolComponent = () => {
                 <label htmlFor="additional_inf">
                   Дополнительные находки (S):{" "}
                 </label>
-                <Field
+                <ReactSelect
                   id="additional_inf"
-                  name="additional_inf"
+                  name="favoriteFruits"
                   placeholder="Выберите находки..."
-                  type="text"
-                  as="select"
-                >
-                  <option value="Нет">Нет</option>
-                  <option value="Эмфизема">Эмфизема</option>
-                  <option value="Буллы">Буллы</option>
-                  <option value="Центральное образование">
-                    Центральное образование
-                  </option>
-                  <option value="Обтурационный ателектаз">
-                    Обтурационный ателектаз
-                  </option>
-                  <option value="Участки «матового стекла»">
-                    Участки «матового стекла»
-                  </option>
-                  <option value="Участки консолидации">
-                    Участки консолидации
-                  </option>
-                  <option value="Признаки туберкулеза">
-                    Признаки туберкулеза
-                  </option>
-                  <option value="Полость в легком">Полость в легком</option>
-                  <option value="Признаки мицетомы">Признаки мицетомы</option>
-                  <option value="Множественные кисты">
-                    Множественные кисты
-                  </option>
-                  <option value="Ретенционная киста">Ретенционная киста</option>
-                  <option value="Диссеминированный процесс">
-                    Диссеминированный процесс
-                  </option>
-                  <option value="Симптом «дерева в почках»">
-                    Симптом «дерева в почках»
-                  </option>
-                  <option value="Центрилобулярные очаги">
-                    Центрилобулярные очаги
-                  </option>
-                  <option value="Типичная ОИП">Типичная ОИП</option>
-                  <option value="Интерстициальные неуточненные изменения с фиброзированием">
-                    Интерстициальные неуточненные изменения с фиброзированием
-                  </option>
-                  <option value="Интерстициальные изменения неуточненные">
-                    Интерстициальные изменения неуточненные
-                  </option>
-                  <option value="Бронхоэктазы">Бронхоэктазы</option>
-                  <option value="Признаки венозного застоя">
-                    Признаки венозного застоя
-                  </option>
-                  <option value="Гидроторакс">Гидроторакс</option>
-                  <option value="Пневмоторакс">Пневмоторакс</option>
-                  <option value="Плевральные бляшки">Плевральные бляшки</option>
-                  <option value="Образования плевры">Образования плевры</option>
-                  <option value="Внтригрудная лимфаденопатия">
-                    Внтригрудная лимфаденопатия
-                  </option>
-                  <option value="Образование средостения">
-                    Образование средостения
-                  </option>
-                  <option value="ГПОД">ГПОД</option>
-                  <option value="Кальцинация коронарных артерий">
-                    Кальцинация коронарных артерий
-                  </option>
-                  <option value="Аневризма аорты">Аневризма аорты</option>
-                  <option value="Расширение легочных артерий">
-                    Расширение легочных артерий
-                  </option>
-                  <option value="Гидроперикард">Гидроперикард</option>
-                  <option value="Узлы щитовидной железы">
-                    Узлы щитовидной железы
-                  </option>
-                  <option value="Образование молочной железы">
-                    Образование молочной железы
-                  </option>
-                  <option value="Образование надпочечников">
-                    Образование надпочечников
-                  </option>
-                  <option value="Образования печени">Образования печени</option>
-                </Field>
+                  isMulti={true}
+                  options={additionalInf}
+                />
               </div>
               <div className="col additional-inf-1-input">
                 <label htmlFor="additional_inf_1">
