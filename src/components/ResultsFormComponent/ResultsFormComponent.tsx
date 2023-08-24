@@ -8,7 +8,6 @@ const initialValues = {
   nodules: [
     {
       lung_position: "",
-      email: "",
       local: "",
       type_of_nodule: "",
       size_of_finding: "",
@@ -277,22 +276,6 @@ const ProtocolComponent = () => {
                           </Field>
                         </div>
                         <div className="col">
-                          <label htmlFor={`nodules.${index}.email`}>
-                            Email
-                          </label>
-                          <Field
-                            id={`nodules.${index}.email`}
-                            name={`nodules.${index}.email`}
-                            placeholder="jane@acme.com"
-                            type="email"
-                          />
-                          <ErrorMessage
-                            name={`nodules.${index}.lung_position`}
-                            component="div"
-                            className="field-error"
-                          />
-                        </div>
-                        <div className="col">
                           <button
                             type="button"
                             className="secondary"
@@ -309,7 +292,6 @@ const ProtocolComponent = () => {
                     onClick={() =>
                       push({
                         lung_position: "",
-                        email: "",
                         local: "",
                         type_of_nodule: "",
                         size_of_finding: "",
@@ -387,7 +369,7 @@ const ProtocolComponent = () => {
                 </label>
                 <ReactSelect
                   id="additional_inf"
-                  name="favoriteFruits"
+                  name="additional_inf"
                   placeholder="Выберите находки..."
                   isMulti={true}
                   options={additionalInf}
