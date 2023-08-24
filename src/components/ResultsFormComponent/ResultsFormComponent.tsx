@@ -1,8 +1,8 @@
 import React from "react";
-//import { createRoot } from "react-dom/client";
-import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
+import { Formik, Field, Form, FieldArray } from "formik";
 import "./styles.css";
 import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
+import { Persist } from "formik-persist";
 
 const initialValues = {
   nodules: [
@@ -174,10 +174,11 @@ const ProtocolComponent = () => {
         initialValues={initialValues}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
-          console.log(JSON.stringify(values, null, 2));
+					console.log(JSON.stringify(values, null, 2));
+					console.log('Form is submitting!');
         }}
       >
-        {({ values }) => (
+        {({ values, isSubmitting }) => (
           <Form>
             <FieldArray name="nodules">
               {({ insert, remove, push }: any) => (
@@ -437,8 +438,10 @@ const ProtocolComponent = () => {
               </div>
             </div>
             <div className="buttons">
-              <button type="submit">Отправить форму</button>
-            </div>
+							<button type="submit" disabled={isSubmitting}>Отправить форму</button>
+							<button type="reset">Reset</button>
+						</div>
+						<Persist name="exam-protocol-form"></Persist>
           </Form>
         )}
       </Formik>
