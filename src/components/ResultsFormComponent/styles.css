@@ -4,10 +4,14 @@
 }
 
 .col {
-  background-color: rgb(214, 212, 212);
+  background-color: rgb(161, 161, 161);
 	font-size: 15px;
 }
 .nodule-index {
 	font-size: 20px;
 	font-weight: 600;
+}
+.placeholder {
+	color: brown;
+	text-decoration: rgb(194, 118, 19);
 }

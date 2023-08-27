@@ -1,8 +1,10 @@
 import React from "react";
 import { Formik, Field, Form, FieldArray } from "formik";
+import { Persist } from "formik-persist";
+
 import "./styles.css";
 import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
-import { Persist } from "formik-persist";
+import sendData from "src/utils/sendData/sendData";
 
 const initialValues = {
   nodules: [
@@ -174,11 +176,19 @@ const ProtocolComponent = () => {
         initialValues={initialValues}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
-					console.log(JSON.stringify(values, null, 2));
-					console.log('Form is submitting!');
+          const max = 20000;
+          const smid = Math.floor(Math.random() * max);
+          /*sendData(
+            "http://93.100.197.241:5088/sql",
+            `INSERT INTO testReport(report_id,radiologist_id,therapist_id, patient_id,research_id, body_of_report) VALUES (${smid}, 126645561,126645561, 10277315, 1, '${JSON.stringify(
+              values
+            )}' )`
+          );*/
+          console.log(JSON.stringify(values, null, 2));
+          console.log("Form is submitting!");
         }}
       >
-        {({ values, isSubmitting }) => (
+        {({ values, isSubmitting, resetForm }) => (
           <Form>
             <FieldArray name="nodules">
               {({ insert, remove, push }: any) => (
@@ -194,11 +204,14 @@ const ProtocolComponent = () => {
                           <Field
                             id={`nodules.${index}.lung_position`}
                             name={`nodules.${index}.lung_position`}
-                            placeholder="Выберите расположение"
+                            //placeholder="Выберите расположение"
                             type="text"
                             as="select"
+                            required
                           >
-                            <option value="default"></option>
+                            <option value="" disabled>
+                              Выберите расположение...
+                            </option>
                             <option value="Левое">Левое</option>
                             <option value="Правое">Правое</option>
                           </Field>
@@ -221,11 +234,13 @@ const ProtocolComponent = () => {
                           <Field
                             id={`nodules.${index}.type_of_nodule`}
                             name={`nodules.${index}.type_of_nodule`}
-                            placeholder="Выберите расположение"
+                            //placeholder="Выберите расположение"
                             type="text"
                             as="select"
                           >
-                            <option value="default"></option>
+                            <option className="placeholder" value="">
+                              Выберите расположение...
+                            </option>
                             <option value="Солидный">Солидный</option>
                             <option value="Частично солидный">
                               Частично солидный
@@ -420,7 +435,7 @@ const ProtocolComponent = () => {
                 <Field
                   id="expert_report"
                   name="expert_report"
-                  placeholder="Выберите причину..."
+                  //placeholder="Выберите причину..."
                   type="text"
                   as="select"
                 >
@@ -438,10 +453,12 @@ const ProtocolComponent = () => {
               </div>
             </div>
             <div className="buttons">
-							<button type="submit" disabled={isSubmitting}>Отправить форму</button>
-							<button type="reset">Reset</button>
-						</div>
-						<Persist name="exam-protocol-form"></Persist>
+              <button type="submit" disabled={isSubmitting}>
+                Отправить форму
+              </button>
+              <button type="reset">Reset</button>
+            </div>
+            <Persist name="exam-protocol-form"></Persist>
           </Form>
         )}
       </Formik>
