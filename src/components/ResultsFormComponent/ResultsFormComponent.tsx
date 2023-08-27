@@ -4,7 +4,7 @@ import { Persist } from "formik-persist";
 
 import "./styles.css";
 import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
-import sendData from "src/utils/sendData/sendData";
+//import sendData from "src/utils/sendData/sendData";
 
 const initialValues = {
   nodules: [
@@ -176,9 +176,9 @@ const ProtocolComponent = () => {
         initialValues={initialValues}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
-          const max = 20000;
+          /*const max = 20000;
           const smid = Math.floor(Math.random() * max);
-          /*sendData(
+          sendData(
             "http://93.100.197.241:5088/sql",
             `INSERT INTO testReport(report_id,radiologist_id,therapist_id, patient_id,research_id, body_of_report) VALUES (${smid}, 126645561,126645561, 10277315, 1, '${JSON.stringify(
               values
