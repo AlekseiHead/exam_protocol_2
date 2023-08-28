@@ -2,6 +2,11 @@ import React from "react";
 import { Formik, Field, Form, FieldArray } from "formik";
 import { Persist } from "formik-persist";
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 import "./styles.css";
 import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
 //import sendData from "src/utils/sendData/sendData";
