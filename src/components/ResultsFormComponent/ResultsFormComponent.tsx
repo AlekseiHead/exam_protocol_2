@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, FieldArray } from "formik";
 import { Persist } from "formik-persist";
-
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-
-import "./styles.css";
-import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
 import {
   Alert,
   AppBar,
@@ -27,19 +19,27 @@ import AlertItem from "../../assets/happylungs.svg";
 import SendIcon from "@mui/icons-material/Send";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RefreshIcon from "@mui/icons-material/Refresh";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+import "./styles.css";
+import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
 //import sendData from "src/utils/sendData/sendData";
 
 interface Values {
   nodules: [
-		{
-			lung_position: string,
-			local: string,
-			type_of_nodule: string,
-			size_of_finding: string,
-			volume: string,
-			benign_signs: string,
-		},
-	],
+    {
+      lung_position: string;
+      local: string;
+      type_of_nodule: string;
+      size_of_finding: string;
+      volume: string;
+      benign_signs: string;
+    }
+  ];
   lung_rads: string;
   additional_inf: string;
   additional_inf_1: string;
@@ -47,7 +47,6 @@ interface Values {
   second_report: string;
   expert_report: string;
 }
-
 
 const ADDITIONAL_INF = [
   {
@@ -301,24 +300,24 @@ const ProtocolComponent = () => {
   return (
     <div>
       <Formik
-        initialValues = {{
-					nodules: [
-						{
-							lung_position: "",
-							local: "",
-							type_of_nodule: "",
-							size_of_finding: "",
-							volume: "",
-							benign_signs: "",
-						},
-					],
-					lung_rads: "",
-					additional_inf: "",
-					additional_inf_1: "",
-					expert_required: false,
-					second_report: "",
-					expert_report: "",
-				}}
+        initialValues={{
+          nodules: [
+            {
+              lung_position: "",
+              local: "",
+              type_of_nodule: "",
+              size_of_finding: "",
+              volume: "",
+              benign_signs: "",
+            },
+          ],
+          lung_rads: "",
+          additional_inf: "",
+          additional_inf_1: "",
+          expert_required: false,
+          second_report: "",
+          expert_report: "",
+        }}
         onSubmit={async (values: Values) => {
           await new Promise((r) => setTimeout(r, 500));
           /*const max = 20000;
