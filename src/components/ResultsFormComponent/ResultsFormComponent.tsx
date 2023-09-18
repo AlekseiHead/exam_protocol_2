@@ -343,7 +343,7 @@ const ProtocolComponent = () => {
                     variant="h6"
                     gutterBottom
                   >
-                    Протокол рентгенологического <br></br> исследования
+                    Протокол рентгенологического <br></br> исследования DPHT
                   </Typography>
                   <Link href="https://dpht.itmo.ru/" target="_blank">
                     <img src={LogoIcon} alt="ITMO University" />
