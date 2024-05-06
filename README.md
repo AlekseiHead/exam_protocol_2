@@ -4,7 +4,8 @@
 Отправка данных реализована в БД sql. Для тестов отправка неактивна.
 Приложение создано с помощью Create react app.
 
-English version
+English version.
+
 A separate protocol for X-ray examination DPHT for embedding in web markups and programs working with medical images.
 It is a copy of the examination protocol developed for OHIF Viewer.
 
