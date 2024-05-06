@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, FieldArray } from "formik";
 import { Persist } from "formik-persist";
+import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
+
 import {
   Alert,
   AppBar,
@@ -26,7 +28,6 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import "./styles.css";
-import ReactSelect from "../ReactSelectComponent/ReactSelectComponent";
 //import sendData from "src/utils/sendData/sendData";
 
 interface Values {
