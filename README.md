@@ -1,7 +1,15 @@
 Отдельный протокол рентгенологического исследования DPHT для встраивания в веб-разметчики и программы работающие с медицинскими изображениями. 
 Является копией протокола обследования разработанного для OHIF Viewer.
 
-Отправка данных реализована в БД sql.
+Отправка данных реализована в БД sql. Для тестов отправка неактивна.
+Приложение создано с помощью Create react app.
+
+English version
+A separate protocol for X-ray examination DPHT for embedding in web markups and programs working with medical images.
+It is a copy of the examination protocol developed for OHIF Viewer.
+
+Sending data is implemented in the sql database. For tests, sending is inactive.
+The application was created using Create react app.
 
 ### `npm start`
 
