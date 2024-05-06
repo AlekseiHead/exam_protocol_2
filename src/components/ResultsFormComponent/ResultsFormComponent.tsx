@@ -337,20 +337,15 @@ const ProtocolComponent = () => {
         {({ values, isSubmitting, resetForm }) => (
           <Form className="form">
             <AppBar position="static" className="appbar">
-              <Container fixed className="toolbar">
-                <Box className="toolbar-items">
-                  <Typography
-                    className="toolbar-text"
-                    variant="h6"
-                    gutterBottom
-                  >
-                    Протокол рентгенологического <br></br> исследования DPHT
-                  </Typography>
-                  <Link href="https://dpht.itmo.ru/" target="_blank">
-                    <img src={LogoIcon} alt="ITMO University" />
-                  </Link>
-                </Box>
-              </Container>
+              <Box className="toolbar-items">
+                <Typography className="toolbar-text" variant="h6" gutterBottom>
+                  Протокол рентгенологического <br></br> исследования DPHT
+                </Typography>
+                <Link href="https://dpht.itmo.ru/" target="_blank">
+                  <img src={LogoIcon} alt="ITMO University" />
+                </Link>
+              </Box>
+              <Container fixed className="toolbar"></Container>
             </AppBar>
             <div className="form-paper">
               <FieldArray name="nodules">
@@ -719,28 +714,28 @@ const ProtocolComponent = () => {
               </Stack>
             </div>
             <footer className="footer">
-              <Container fixed>
-                <Box className="footer-contacts">
-                  <Typography>
-                    Контакты:{" "}
-                    <Link
-                      href="mailto:dpht1014@itmo.ru"
-                      className="link"
-                      underline="hover"
-                      color="inherit"
-                    >
-                      dpht1014@itmo.ru
-                    </Link>
-                  </Typography>
-
-                  <Link href="https://dpht.itmo.ru/" target="_blank">
-                    <img
-                      src={LogoIcon}
-                      alt="ITMO University"
-                      className="footer-items-img"
-                    />
+              <Box className="footer-contacts">
+                <Typography className="footer-contacts-text">
+                  Контакты:{" "}
+                  <Link
+                    href="mailto:dpht1014@itmo.ru"
+                    className="link"
+                    underline="hover"
+                    color="inherit"
+                  >
+                    dpht1014@itmo.ru
                   </Link>
-                </Box>
+                </Typography>
+
+                <Link href="https://dpht.itmo.ru/" target="_blank">
+                  <img
+                    src={LogoIcon}
+                    alt="ITMO University"
+                    className="footer-items-img"
+                  />
+                </Link>
+              </Box>
+              <Container fixed>
                 <Typography
                   className="footer-text"
                   align="center"
@@ -748,7 +743,16 @@ const ProtocolComponent = () => {
                   component="p"
                   variant="subtitle1"
                 >
-                  &#169; Цифровые технологии в общественном здоровье
+                  <Link
+                    href="https://github.com/AlekseiHead"
+                    className="link"
+                    underline="hover"
+                    color="inherit"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    &#169; Developed by head.dev
+                  </Link>
                 </Typography>
               </Container>
             </footer>

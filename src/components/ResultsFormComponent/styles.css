@@ -10,10 +10,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+	margin-left: 80px;
+	margin-right: 80px;
 }
 .toolbar-text {
-  color: rgb(0, 0, 0);
   font-weight: bold;
+}
+.footer-contacts-tex {
+  color: #ffffff;
 }
 
 /*-------nodules--------*/
@@ -42,7 +46,7 @@
   padding-left: 10px;
 }
 .nodules-items-field {
-  width: fill-available;
+  width: stretch;
   height: 36px;
   border: 1px solid;
   border-radius: 4px;
@@ -126,9 +130,12 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+	margin-left: 80px;
+	margin-right: 80px;
 }
 .footer-text {
   font-size: 10px;
+	color: #ffffff;
 }
 .footer-items-img {
   height: 55px;
